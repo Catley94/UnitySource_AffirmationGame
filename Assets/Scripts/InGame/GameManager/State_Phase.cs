@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PhaseObject
@@ -33,7 +34,7 @@ public class State_Phase : MonoBehaviour
     [SerializeField] private int currentPhase = 0;
     [SerializeField] private int minutes = 0;
     [SerializeField] private int seconds = 0;
-    
+
     private DateTime initialTime;
     private DateTime currentTime;
     private TimeSpan elapsedTime;
@@ -57,11 +58,11 @@ public class State_Phase : MonoBehaviour
     {
         //Get elapsed time to work out phases
         elapsedTime = DateTime.Now - initialTime;
+        
+        // For Inspector - Debugging only
         minutes = elapsedTime.Minutes;
         seconds = elapsedTime.Seconds;
-        // Debug.Log(elapsedTime.Minutes + ":" + elapsedTime.Seconds);
         
-        if(elapsedTime.Minutes != currentPhase) Debug.Log(elapsedTime.Minutes + ":" + elapsedTime.Seconds);
         UpdatePhase();
     }
     
@@ -93,6 +94,10 @@ public class State_Phase : MonoBehaviour
                 Phase3?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhases[GetCurrentPhase()]));
                 phase3Complete = true;
             }
+        } else if (elapsedTime.TotalMinutes >= soCircleConfig.endGameTimeThreshold)
+        {
+            Debug.Log("GAME ENDED");
+            SceneManager.LoadScene("Exit");
         }
     }
     
