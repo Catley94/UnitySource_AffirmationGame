@@ -158,7 +158,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &183804205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa034beebfa03a35a5983e6a7b41bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chosenAffirmation: {fileID: 11400000, guid: f91e835ef5218196fa0791bc76dbcda9, type: 2}
+  chosenAffirmation: {fileID: 0}
   textMaxScale: 1
   transitionDelay: 0.5
 --- !u!1 &502136537
@@ -499,7 +499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585b602337ab2099283614df604aac83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soGrowDuration: {fileID: 11400000, guid: ff19d048db6ed63d59db4b1cbb78e539, type: 2}
+  soCircleConfig: {fileID: 11400000, guid: ff19d048db6ed63d59db4b1cbb78e539, type: 2}
+  Phase0:
+    m_PersistentCalls:
+      m_Calls: []
   Phase1:
     m_PersistentCalls:
       m_Calls: []
@@ -509,6 +512,9 @@ MonoBehaviour:
   Phase3:
     m_PersistentCalls:
       m_Calls: []
+  currentPhase: 0
+  minutes: 0
+  seconds: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a41c2543cecfc9296112a992d6f4f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soGrowDuration: {fileID: 11400000, guid: ff19d048db6ed63d59db4b1cbb78e539, type: 2}
+  soCircleConfig: {fileID: 11400000, guid: ff19d048db6ed63d59db4b1cbb78e539, type: 2}
   parentCanvas: {fileID: 183804206}
   circlePrefab: {fileID: 1750451769797999850, guid: bf4d8874c1c1e3876afb9303a7f3b257, type: 3}
   spawnDelay: 0.5
