@@ -3,18 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
+
+public class PhaseObject
+{
+    public float growDuration;
+    public float delayDuration;
+    
+public PhaseObject(float growDuration, float delayDuration)
+    {
+        this.growDuration = growDuration;
+        this.delayDuration = delayDuration;
+    }
+}
 
 public class State_Phase : MonoBehaviour
 {
 
-    [SerializeField] private SOGrowDuration soGrowDuration;
+    [FormerlySerializedAs("soGrowDuration")] [SerializeField] private SOCircleConfig soCircleConfig;
 
-    [HideInInspector]public UnityEvent<float> Phase0;
-    [HideInInspector]public UnityEvent<float> Phase1;
+    [HideInInspector]public UnityEvent<PhaseObject> Phase0;
+    [HideInInspector]public UnityEvent<PhaseObject> Phase1;
     private bool phase1Complete = false;
-    [HideInInspector]public UnityEvent<float> Phase2;
+    [HideInInspector]public UnityEvent<PhaseObject> Phase2;
     private bool phase2Complete = false;
-    [HideInInspector]public UnityEvent<float> Phase3;
+    [HideInInspector]public UnityEvent<PhaseObject> Phase3;
     private bool phase3Complete = false;
 
     [SerializeField] private int currentPhase = 0;
@@ -30,7 +43,8 @@ public class State_Phase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Phase0?.Invoke(soGrowDuration.growPhases[GetCurrentPhase()]);
+        
+        Phase0?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhases[GetCurrentPhase()]));
         
         
         
@@ -55,29 +69,29 @@ public class State_Phase : MonoBehaviour
     {
         if (!phase1Complete)
         {
-            if (elapsedTime.TotalMinutes >= soGrowDuration.phaseMinuteThresholds[0])
+            if (elapsedTime.TotalMinutes >= soCircleConfig.phaseMinuteThresholds[0])
             {
-                Phase1?.Invoke(soGrowDuration.growPhases[GetCurrentPhase()]);
-                phase1Complete = true;
                 currentPhase = 1;
+                Phase1?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhases[GetCurrentPhase()]));
+                phase1Complete = true;
             }
         }
         else if (!phase2Complete)
         {
-            if (elapsedTime.TotalMinutes >= soGrowDuration.phaseMinuteThresholds[1])
+            if (elapsedTime.TotalMinutes >= soCircleConfig.phaseMinuteThresholds[1])
             {
-                Phase2?.Invoke(soGrowDuration.growPhases[GetCurrentPhase()]);
-                phase2Complete = true;
                 currentPhase = 2;
+                Phase2?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhases[GetCurrentPhase()]));
+                phase2Complete = true;
             }
         }
         else if (!phase3Complete)
         {
-            if (elapsedTime.TotalMinutes >= soGrowDuration.phaseMinuteThresholds[3])
+            if (elapsedTime.TotalMinutes >= soCircleConfig.phaseMinuteThresholds[2])
             {
-                Phase3?.Invoke(soGrowDuration.growPhases[GetCurrentPhase()]);
-                phase3Complete = true;
                 currentPhase = 3;
+                Phase3?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhases[GetCurrentPhase()]));
+                phase3Complete = true;
             }
         }
     }

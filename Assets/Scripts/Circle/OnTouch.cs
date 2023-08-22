@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,12 @@ using UnityEngine.UI;
 public class OnTouch : MonoBehaviour
 {
     
-    private float timeLeft = 1f;
+    [SerializeField] private float timeLeft = 1f;
     private Image circleImage;
 
     public UnityEvent TimedOutEvent;
     public UnityEvent TouchedEvent;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -60,5 +62,10 @@ public class OnTouch : MonoBehaviour
     {
         float distanceSquared = (point - circleCenter).sqrMagnitude;
         return distanceSquared <= radius * radius;
+    }
+
+    public void SetTimeOut(float timeout)
+    {
+        timeLeft = timeout;
     }
 }

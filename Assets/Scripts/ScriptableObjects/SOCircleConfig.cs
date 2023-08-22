@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "GrowDurationConfig", menuName = "Config/New Duration Config", order = 1)]
-public class SOGrowDuration : ScriptableObject
+public class SOCircleConfig : ScriptableObject
 {
     [FormerlySerializedAs("phases")] public float[] growPhases;
     public float[] shrinkPhases;
-    public float[] spawnDelayPhases;
+    //spawnDelayTimeoutPhases[i] must be greater than growPhases[i]
+    [FormerlySerializedAs("spawnDelayPhases")] public float[] spawnDelayTimeoutPhases;
     public int[] phaseMinuteThresholds;
 }
 

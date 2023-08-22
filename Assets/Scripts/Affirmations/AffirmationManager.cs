@@ -34,10 +34,15 @@ public class AffirmationManager : MonoBehaviour
 
     private void SubToEvents()
     {
-        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase0.AddListener((delay) => SetTransitionDelay(delay * 2));
-        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase1.AddListener((delay) => SetTransitionDelay(delay * 2));
-        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase2.AddListener((delay) => SetTransitionDelay(delay * 2));
-        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase3.AddListener((delay) => SetTransitionDelay(delay * 2));
+        // GameObject.Find("GameManager").GetComponent<State_Phase>().Phase0.AddListener((phaseObj) => SetTransitionDelay(phaseObj.growDuration * 2));
+        // GameObject.Find("GameManager").GetComponent<State_Phase>().Phase1.AddListener((phaseObj) => SetTransitionDelay(phaseObj.growDuration * 2));
+        // GameObject.Find("GameManager").GetComponent<State_Phase>().Phase2.AddListener((phaseObj) => SetTransitionDelay(phaseObj.growDuration * 2));
+        // GameObject.Find("GameManager").GetComponent<State_Phase>().Phase3.AddListener((phaseObj) => SetTransitionDelay(phaseObj.growDuration * 2));
+        
+        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase0.AddListener((phaseObj) => SetTransitionDelay(phaseObj.delayDuration));
+        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase1.AddListener((phaseObj) => SetTransitionDelay(phaseObj.delayDuration));
+        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase2.AddListener((phaseObj) => SetTransitionDelay(phaseObj.delayDuration));
+        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase3.AddListener((phaseObj) => SetTransitionDelay(phaseObj.delayDuration));
     }
 
     private void SetTransitionDelay(float delay)
