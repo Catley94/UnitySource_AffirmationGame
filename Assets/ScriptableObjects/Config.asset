@@ -15,12 +15,15 @@ MonoBehaviour:
   growPhases:
   - 0.25
   - 0.5
-  - 1
-  - 2
+  - 0.75
+  - 1.5
   shrinkPhases: []
-  spawnDelayPhases:
+  spawnDelayTimeoutPhases:
   - 0.35
   - 0.5
   - 0.75
+  - 1.5
+  phaseMinuteThresholds:
   - 1
-  phaseMinuteThresholds: 010000000200000003000000
+  - 2
+  - 3
