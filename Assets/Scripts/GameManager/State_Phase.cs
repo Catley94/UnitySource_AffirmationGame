@@ -9,14 +9,17 @@ public class State_Phase : MonoBehaviour
 
     [SerializeField] private SOGrowDuration soGrowDuration;
 
-    [HideInInspector]public UnityEvent Phase1;
+    [HideInInspector]public UnityEvent<float> Phase0;
+    [HideInInspector]public UnityEvent<float> Phase1;
     private bool phase1Complete = false;
-    [HideInInspector]public UnityEvent Phase2;
+    [HideInInspector]public UnityEvent<float> Phase2;
     private bool phase2Complete = false;
-    [HideInInspector]public UnityEvent Phase3;
+    [HideInInspector]public UnityEvent<float> Phase3;
     private bool phase3Complete = false;
 
-    private int currentPhase = 0;
+    [SerializeField] private int currentPhase = 0;
+    [SerializeField] private int minutes = 0;
+    [SerializeField] private int seconds = 0;
     
     private DateTime initialTime;
     private DateTime currentTime;
@@ -27,6 +30,10 @@ public class State_Phase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Phase0?.Invoke(soGrowDuration.growPhases[GetCurrentPhase()]);
+        
+        
+        
         //Get initial time of when script started (When game started)
         initialTime = DateTime.Now;
     }
@@ -36,6 +43,8 @@ public class State_Phase : MonoBehaviour
     {
         //Get elapsed time to work out phases
         elapsedTime = DateTime.Now - initialTime;
+        minutes = elapsedTime.Minutes;
+        seconds = elapsedTime.Seconds;
         // Debug.Log(elapsedTime.Minutes + ":" + elapsedTime.Seconds);
         
         if(elapsedTime.Minutes != currentPhase) Debug.Log(elapsedTime.Minutes + ":" + elapsedTime.Seconds);
@@ -48,7 +57,7 @@ public class State_Phase : MonoBehaviour
         {
             if (elapsedTime.TotalMinutes >= soGrowDuration.phaseMinuteThresholds[0])
             {
-                Phase1?.Invoke();
+                Phase1?.Invoke(soGrowDuration.growPhases[GetCurrentPhase()]);
                 phase1Complete = true;
                 currentPhase = 1;
             }
@@ -57,7 +66,7 @@ public class State_Phase : MonoBehaviour
         {
             if (elapsedTime.TotalMinutes >= soGrowDuration.phaseMinuteThresholds[1])
             {
-                Phase2?.Invoke();
+                Phase2?.Invoke(soGrowDuration.growPhases[GetCurrentPhase()]);
                 phase2Complete = true;
                 currentPhase = 2;
             }
@@ -66,7 +75,7 @@ public class State_Phase : MonoBehaviour
         {
             if (elapsedTime.TotalMinutes >= soGrowDuration.phaseMinuteThresholds[3])
             {
-                Phase3?.Invoke();
+                Phase3?.Invoke(soGrowDuration.growPhases[GetCurrentPhase()]);
                 phase3Complete = true;
                 currentPhase = 3;
             }

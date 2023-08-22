@@ -11,6 +11,8 @@ public class SpawnCircles : MonoBehaviour
     [SerializeField] private GameObject circlePrefab;
     [SerializeField] private float spawnDelay; 
     
+    private int currentPhase = 0;
+    
     private int growDuration = 0;
 
     // Start is called before the first frame update
@@ -18,12 +20,36 @@ public class SpawnCircles : MonoBehaviour
     {
         // SpawnCircle();
         StartCoroutine(SpawnNewCircles());
+
+        SubToEvents();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SubToEvents()
     {
+        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase0.AddListener((delay) =>
+        {
+            currentPhase = 0;
+            SetSpawnDelay(delay);
+        });
         
+        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase1.AddListener((delay) =>
+        {
+            currentPhase = 1;
+            SetSpawnDelay(delay);
+        });
+        
+        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase1.AddListener((delay) =>
+        {
+            currentPhase = 2;
+            SetSpawnDelay(delay);
+        });
+        
+        GameObject.Find("GameManager").GetComponent<State_Phase>().Phase1.AddListener((delay) =>
+        {
+            currentPhase = 3;
+            SetSpawnDelay(delay);
+        });
     }
 
     private IEnumerator SpawnNewCircles()
@@ -38,26 +64,14 @@ public class SpawnCircles : MonoBehaviour
     private void SpawnCircle()
     {
 
-        UpdateSpawnDelay();
-        
         if (parentCanvas != null && circlePrefab != null)
         {
             // Instantiate the image prefab
             GameObject circle = Instantiate(circlePrefab);
-            
 
-            // circle.GetComponent<Scale>().FullSize.AddListener(() =>
-            // {
-            //     Invoke(nameof(SpawnCircle), spawnDelay);
-            //     circle.GetComponent<Scale>().FullSize.RemoveAllListeners();
-            //     
-            // });
-
-            int gamePhase = GetGamePhase();
-            
-            circle.GetComponent<Scale>().SetGrowDuration(soGrowDuration.growPhases[gamePhase]);
-            Debug.Log("Game phase: " + gamePhase);
-            Debug.Log("Setting grow duration to: " + soGrowDuration.growPhases[gamePhase]);
+            circle.GetComponent<Scale>().SetGrowDuration(soGrowDuration.growPhases[currentPhase]);
+            Debug.Log("Game phase: " + currentPhase);
+            Debug.Log("Setting grow duration to: " + soGrowDuration.growPhases[currentPhase]);
 
             // Set the parent to the canvas
             circle.transform.SetParent(transform, false);
@@ -84,16 +98,16 @@ public class SpawnCircles : MonoBehaviour
         
     }
 
-    private void UpdateSpawnDelay()
-    {
-        
-        SetSpawnDelay(soGrowDuration.growPhases[GetGamePhase()]);
-    }
+    // private void UpdateSpawnDelay()
+    // {
+    //     
+    //     SetSpawnDelay(soGrowDuration.growPhases[GetGamePhase()]);
+    // }
 
-    private int GetGamePhase()
-    {
-        return GameObject.Find("GameManager").GetComponent<State_Phase>().GetCurrentPhase();
-    }
+    // private int GetGamePhase()
+    // {
+    //     return GameObject.Find("GameManager").GetComponent<State_Phase>().GetCurrentPhase();
+    // }
 
     private void SetSpawnDelay(float delay)
     {

@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 399715424}
   - component: {fileID: 399715423}
   m_Layer: 5
-  m_Name: AffirmationText
+  m_Name: AffirmationTextBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,8 +315,9 @@ GameObject:
   - component: {fileID: 457539735}
   - component: {fileID: 457539737}
   - component: {fileID: 457539736}
+  - component: {fileID: 457539738}
   m_Layer: 5
-  m_Name: Affirmation
+  m_Name: Affirmations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +332,7 @@ RectTransform:
   m_GameObject: {fileID: 457539734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 399715422}
@@ -439,6 +440,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457539734}
   m_CullTransparentMesh: 1
+--- !u!114 &457539738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457539734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa034beebfa03a35a5983e6a7b41bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenAffirmation: {fileID: 11400000, guid: f91e835ef5218196fa0791bc76dbcda9, type: 2}
+  textMaxScale: 1
+  transitionDelay: 0.5
 --- !u!1 &502136537
 GameObject:
   m_ObjectHideFlags: 0
