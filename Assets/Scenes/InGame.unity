@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 998566272}
   - component: {fileID: 998566271}
   m_Layer: 0
-  m_Name: UIBlock2D
+  m_Name: Affirmations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
