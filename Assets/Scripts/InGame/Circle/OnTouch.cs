@@ -10,16 +10,24 @@ public class OnTouch : MonoBehaviour
 {
     
     [SerializeField] private float timeLeft = 1f;
+    [SerializeField] private AudioClip audioClip;
     private Image circleImage;
-
+    private AudioSource audioSource;
+    private bool touched = false;
+    
+    
     public UnityEvent TimedOutEvent;
     public UnityEvent TouchedEvent;
+    
     
 
     // Start is called before the first frame update
     void Start()
     {
         circleImage = GetComponent<Image>();
+
+        audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
+        
         Invoke(nameof(TimedOut), timeLeft);
     }
 
@@ -41,10 +49,16 @@ public class OnTouch : MonoBehaviour
 
     private void Touched()
     {
-        CancelInvoke(nameof(TimedOut));
-        TouchedEvent?.Invoke();
-        //TODO: Play sound - then Remove From Canvas;
-        RemoveFromCanvas();
+        if (!touched)
+        {
+            touched = true;
+            CancelInvoke(nameof(TimedOut));
+            TouchedEvent?.Invoke();
+            //TODO: Play sound - then Remove From Canvas;
+            audioSource.PlayOneShot(audioClip);
+            RemoveFromCanvas();
+        }
+
     }
     
     private void TimedOut()
