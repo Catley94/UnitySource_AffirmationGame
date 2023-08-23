@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c34c78be04a7eefb82eef29f38ba510, type: 3}
   m_Name: Calm
   m_EditorClassIdentifier: 
-  affirmationName: I am Strong
-  affirmations: 'I am Calm. '
+  affirmationName: I am Calm
+  affirmations: I am Calm. My mind is clear.

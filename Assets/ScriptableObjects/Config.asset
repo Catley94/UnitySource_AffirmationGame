@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growPhases:
   - 0.25
-  - 0.5
+  - 0.6
   - 0.75
   - 1.5
   shrinkPhases: []
   spawnDelayTimeoutPhases:
-  - 0.35
   - 0.5
+  - 0.6
   - 0.75
   - 1.5
   phaseMinuteThresholds:
