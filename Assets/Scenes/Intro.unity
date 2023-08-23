@@ -371,7 +371,7 @@ MonoBehaviour:
     ReceiveShadows: 1
   PreviewSize: {x: 1, y: 1, z: 0}
   visuals:
-    Color: {r: 0.504717, g: 0.8012167, b: 1, a: 1}
+    Color: {r: 0.28235295, g: 0.62352943, b: 0.7176471, a: 1}
     CornerRadius:
       Raw: 0
       Type: 0
@@ -387,13 +387,13 @@ MonoBehaviour:
       FillAngle: 90
       Enabled: 0
     Gradient:
-      Color: {r: 0, g: 1, b: 1, a: 1}
+      Color: {r: 0.42352942, g: 0.69803923, b: 0.7764706, a: 1}
       Center:
         X:
           Raw: 0
           Type: 1
         Y:
-          Raw: -0.5
+          Raw: 0.5
           Type: 1
       Radius:
         X:
@@ -402,7 +402,7 @@ MonoBehaviour:
         Y:
           Raw: 1
           Type: 1
-      Rotation: 0
+      Rotation: 180
       Enabled: 1
     Border:
       Color: {r: 1, g: 1, b: 1, a: 1}
@@ -681,7 +681,7 @@ MonoBehaviour:
     ReceiveShadows: 1
   PreviewSize: {x: 1, y: 1, z: 0}
   visuals:
-    Color: {r: 0.504717, g: 0.8012167, b: 1, a: 1}
+    Color: {r: 0.42352942, g: 0.69803923, b: 0.7764706, a: 1}
     CornerRadius:
       Raw: 0.5
       Type: 0
@@ -715,26 +715,26 @@ MonoBehaviour:
       Rotation: 0
       Enabled: 0
     Border:
-      Color: {r: 0.5058824, g: 0.8, b: 1, a: 1}
+      Color: {r: 0.28235295, g: 0.62352943, b: 0.7176471, a: 1}
       Width:
         Raw: 0.1
         Type: 0
-      Enabled: 1
+      Enabled: 0
       Direction: 0
     Shadow:
-      Color: {r: 0, g: 0.5952382, b: 1, a: 1}
+      Color: {r: 0.28235295, g: 0.62352943, b: 0.7176471, a: 1}
       Width:
-        Raw: 0
+        Raw: 0.1
         Type: 0
       Blur:
-        Raw: 0.5
+        Raw: 0.1
         Type: 0
       Offset:
         X:
           Raw: 0
           Type: 0
         Y:
-          Raw: 0
+          Raw: -0.1
           Type: 0
       Enabled: 1
       Direction: 0
@@ -830,8 +830,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293184630
+  m_fontColor: {r: 0.4627451, g: 0.8, b: 0.89411765, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1398,8 +1398,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293184630
+  m_fontColor: {r: 0.4627451, g: 0.8, b: 0.89411765, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2228,7 +2228,7 @@ MonoBehaviour:
   openPrefabs: 0
   prefabs: []
   idRef:
-    _Keys: 2764cc1d1557b97cd001264d5e614a410754fd3081dae6118b70e50a77750438058e824fd5782b2d2bde53ba3c368a7aa118e83596ac5c4c7ebaa8863cc4f345fba1b82f2105947028d005a2872bd53e04a05470a2c631583236d11bcfa5f16715f24b2211456459ac580cc5a7b9c452e569819b7083a23fd4106257d6af3f7cde9db77a76f7504a05adc349b96bb078727e36652355f7686a75b0fe1cf27d5c687618f6fdb52312e7c96a3d40a6793fc2dac955e5a5a077a64f0f0147512e123066b02f84a77628a2484bedc034a811eeefc0f7bcd3423ed7a19d4cc5245938f87d6da757a9c368ae0e08d10e72c872a6fe12579137565cdd8df9d9bb3c12395e7b1bc25eaf97674dd7b751358ed0496b0ff3c336b1c92ed4cacbcaafeaac1520412e8a8e8bd0556b855c9711576d4d434f9153b6b0fd54b3ecee94e4ccb861d55d8d8942a4280ae14858b055311d7ba382f20184ff346f43da3d7a7a653a61cefa6d6fe5f78f61268634ff09aea97fd0733766bfbae529d7e1ba9898516f4584bae35bc4ad9665eeac240234cb996acf41b612635edf13ebbc66fcc20837770a857c3b6efbbc21ded2781295e3f50b484fc9569b5ce224d93f91a4989ae22ed58f1dbbb29920785179dae2fb84c424beefc1233edcc95d04b5e1eb6d57bc3c96664621d2712b0547b8f3adda0e274d6a91cd812cb73d219dc9955a381e8f46f619b49bc921c84cc4bb6af7cf763812d6db4164f879c128367e418eb2b9ad1302a737689f6bd0450ad772a4622c443d836cdf82e6d32b5fb9c7edf68361701dd3d29eafbda67741dc5dfd9a35bb1962c37f0b46da2b2d2e8427512782263d6ab8702e70716a80291dde5976296ed601ad8b3304552a42020033d469abb040029a68e1c58da9f059021d9d467b5ca8145250d40e5941c0712d2c703e95167e33e0a3ef6eaf6371049ad90573c7897d5c251644047ab1a324d8ad679ec64e3c17632fd8e1b4e93b4ac2d8a8334633395c52ec9c53a47c516e9356a56efea1cb34cf2cfa22725a8e6c8a03859757c0f9109f0a223f98d53125049b1553b5942c776e7fa73851f25f51d8cc22a140f2df7906819e1cd753f773a5c70d182ffdde000f44b9d2a4075c315a898aee21225363551415f3b711d84804d7d84e14d6d8233b136cf83b7ea80026b889547816cc01053cb88435afbd69cd83019d3bd6ee639e98dc3c42034661deb2994170960930
+    _Keys: 2764cc1d1557b97cd001264d5e614a410754fd3081dae6118b70e50a77750438058e824fd5782b2d2bde53ba3c368a7aa118e83596ac5c4c7ebaa8863cc4f345fba1b82f2105947028d005a2872bd53e04a05470a2c631583236d11bcfa5f16715f24b2211456459ac580cc5a7b9c452e569819b7083a23fd4106257d6af3f7cde9db77a76f7504a05adc349b96bb078727e36652355f7686a75b0fe1cf27d5c687618f6fdb52312e7c96a3d40a6793fc2dac955e5a5a077a64f0f0147512e123066b02f84a77628a2484bedc034a811eeefc0f7bcd3423ed7a19d4cc5245938f87d6da757a9c368ae0e08d10e72c872a6fe12579137565cdd8df9d9bb3c12395e7b1bc25eaf97674dd7b751358ed0496b0ff3c336b1c92ed4cacbcaafeaac1520412e8a8e8bd0556b855c9711576d4d434f9153b6b0fd54b3ecee94e4ccb861d55d8d8942a4280ae14858b055311d7ba382f20184ff346f43da3d7a7a653a61cefa6d6fe5f78f61268634ff09aea97fd0733766bfbae529d7e1ba9898516f4584bae35bc4ad9665eeac240234cb996acf41b612635edf13ebbc66fcc20837770a857c3b6efbbc21ded2781295e3f50b484fc9569b5ce224d93f91a4989ae22ed58f1dbbb29920785179dae2fb84c424beefc1233edcc95d04b5e1eb6d57bc3c96664621d2712b0547b8f3adda0e274d6a91cd812cb73d219dc9955a381e8f46f619b49bc921c84cc4bb6af7cf763812d6db4164f879c128367e418eb2b9ad1302a737689f6bd0450ad772a4622c443d836cdf82e6d32b5fb9c7edf68361701dd3d29eafbda67741dc5dfd9a35bb1962c37f0b46da2b2d2e8427512782263d6ab8702e70716a80291dde5976296ed601ad8b3304552a42020033d469abb040029a68e1c58da9f059021d9d467b5ca8145250d40e5941c0712d2c703e95167e33e0a3ef6eaf6371049ad90573c7897d5c251644047ab1a324d8ad679ec64e3c17632fd8e1b4e93b4ac2d8a8334633395c52ec9c53a47c516e9356a56efea1cb34cf2cfa22725a8e6c8a03859757c0f9109f0a223f98d53125049b1553b5942c776e7fa73851f25f51d8cc22a140f2df7906819e1cd753f773a5c70d182ffdde000f44b9d2a4075c315a898aee21225363551415f3b711d84804d7d84e14d6d8233b136cf83b7ea80026b889547816cc01053cb88435afbd69cd83019d3bd6ee639e98dc3c42034661deb2994170960930a0af1f6d2b56b655
     _Values:
     - {fileID: 1427703363}
     - {fileID: 1427703362}
@@ -2340,6 +2340,7 @@ MonoBehaviour:
     - {fileID: 602864154}
     - {fileID: 602864150}
     - {fileID: 1929454225}
+    - {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
 --- !u!4 &1723047947
 Transform:
   m_ObjectHideFlags: 0
@@ -2368,7 +2369,7 @@ GameObject:
   - component: {fileID: 1929454225}
   - component: {fileID: 1929454224}
   m_Layer: 0
-  m_Name: UIBlock2D
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
