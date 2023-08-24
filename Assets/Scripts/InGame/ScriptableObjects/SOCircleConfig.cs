@@ -9,8 +9,9 @@ public class SOCircleConfig : ScriptableObject
     [FormerlySerializedAs("phases")] public float[] growPhases;
     public float[] shrinkPhases;
     //spawnDelayTimeoutPhases[i] must be greater than or equal to growPhases[i]
-    [FormerlySerializedAs("spawnDelayPhases")] public float[] spawnDelayTimeoutPhases;
+    [FormerlySerializedAs("spawnDelayTimeoutPhases")] [FormerlySerializedAs("spawnDelayPhases")] public float[] spawnDelayTimeoutPhasesInSeconds;
     public float[] phaseMinuteThresholds;
     public float endGameTimeThreshold;
+    public Color[] circleColourPhases;
 }
 

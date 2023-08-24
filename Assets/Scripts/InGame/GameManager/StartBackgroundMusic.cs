@@ -11,16 +11,16 @@ public class StartBackgroundMusic : MonoBehaviour
     private float musicSpeed = 1f;
     
     private AudioSource audioSource;
-
-    private void OnEnable()
-    {
-        SubToEvents();
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {
+        SubToEvents();
+        
+        musicSpeed = 1.5f;
+        
         audioSource = GameObject.FindWithTag("AudioSource_Music").GetComponent<AudioSource>();
+        audioSource.pitch = musicSpeed;
         audioSource.loop = true;
         audioSource.clip = audioClip;
         audioSource.Play();
@@ -28,12 +28,7 @@ public class StartBackgroundMusic : MonoBehaviour
 
     private void SubToEvents()
     {
-        GetComponent<State_Phase>().Phase0.AddListener((phaseObj) =>
-        {
-            musicSpeed = 1.5f;
-            audioSource.pitch = musicSpeed;
-        });
-        
+
         GetComponent<State_Phase>().Phase1.AddListener((phaseObj) =>
         {
             musicSpeed = 1.4f;

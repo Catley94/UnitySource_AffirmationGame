@@ -17,7 +17,7 @@ public class SpawnCircles : MonoBehaviour
     private int currentPhase = 0;
     
     private int growDuration = 0;
-    private float delayDuration = 0f;
+    private Color currentColour;
 
     private void OnEnable()
     {
@@ -39,28 +39,24 @@ public class SpawnCircles : MonoBehaviour
         GameObject.Find("GameManager").GetComponent<State_Phase>().Phase0.AddListener((phaseObj) =>
         {
             currentPhase = 0;
-            delayDuration = phaseObj.delayDuration;
             SetSpawnDelay(phaseObj.delayDuration);
         });
         
         GameObject.Find("GameManager").GetComponent<State_Phase>().Phase1.AddListener((phaseObj) =>
         {
             currentPhase = 1;
-            delayDuration = phaseObj.delayDuration;
             SetSpawnDelay(phaseObj.delayDuration);
         });
         
         GameObject.Find("GameManager").GetComponent<State_Phase>().Phase2.AddListener((phaseObj) =>
         {
             currentPhase = 2;
-            delayDuration = phaseObj.delayDuration;
             SetSpawnDelay(phaseObj.delayDuration);
         });
         
         GameObject.Find("GameManager").GetComponent<State_Phase>().Phase3.AddListener((phaseObj) =>
         {
             currentPhase = 3;
-            delayDuration = phaseObj.delayDuration;
             SetSpawnDelay(phaseObj.delayDuration);
         });
     }
@@ -83,7 +79,8 @@ public class SpawnCircles : MonoBehaviour
             GameObject circle = Instantiate(circlePrefab);
 
             circle.GetComponent<Scale>().SetGrowDuration(soCircleConfig.growPhases[currentPhase]);
-            circle.GetComponent<OnTouch>().SetTimeOut(soCircleConfig.spawnDelayTimeoutPhases[currentPhase]);
+            circle.GetComponent<OnTouch>().SetTimeOut(soCircleConfig.spawnDelayTimeoutPhasesInSeconds[currentPhase]);
+            circle.GetComponent<ChangeColour>().SetColour(soCircleConfig.circleColourPhases[currentPhase]);
             
             Debug.Log("Game phase: " + currentPhase);
             Debug.Log("Setting grow duration to: " + soCircleConfig.growPhases[currentPhase]);
