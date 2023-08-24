@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class OnTouch : MonoBehaviour
@@ -14,16 +15,17 @@ public class OnTouch : MonoBehaviour
     private Image circleImage;
     private AudioSource audioSource;
     private bool touched = false;
-    
-    
+
+
     public UnityEvent TimedOutEvent;
     public UnityEvent TouchedEvent;
     
     
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        
         circleImage = GetComponent<Image>();
 
         audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
@@ -63,12 +65,14 @@ public class OnTouch : MonoBehaviour
     
     private void TimedOut()
     {
+        Debug.Log("TIMED OUT");
         TimedOutEvent?.Invoke();
     }
     
     private void RemoveFromCanvas()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        GetComponent<Pool>().GetObjectPool().Release(gameObject);
     }
 
     // Helper function to check if a point is inside a circle

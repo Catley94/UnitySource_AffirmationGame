@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Pool;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -16,16 +17,18 @@ public class Scale : MonoBehaviour
     private Image circleImage;
     private Vector3 initialScale;
     
+    private IObjectPool<GameObject> objectPool;
+    
     
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         GetComponent<OnTouch>().TimedOutEvent.AddListener(() =>
         {
             StartCoroutine(Shrink());
             GetComponent<OnTouch>().TimedOutEvent.RemoveAllListeners();
         });
-        
+
         GetComponent<OnTouch>().TouchedEvent.AddListener(() =>
         {
             StopCoroutine(Shrink());
@@ -114,6 +117,12 @@ public class Scale : MonoBehaviour
 
     private void RemoveFromCanvas()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        GetComponent<Pool>().GetObjectPool().Release(gameObject);
     }
+    
+    // public void ResetScale()
+    // {
+    //     circleImage.transform.localScale = initialScale;
+    // }
 }

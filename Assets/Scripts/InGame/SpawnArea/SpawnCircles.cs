@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -14,6 +15,8 @@ public class SpawnCircles : MonoBehaviour
     [SerializeField] private GameObject circlePrefab;
     [SerializeField] private float spawnDelay; 
     
+    private IObjectPool<GameObject> circlePool;
+
     private int currentPhase = 0;
     
     private int growDuration = 0;
@@ -28,11 +31,11 @@ public class SpawnCircles : MonoBehaviour
     void Start()
     {
         // SpawnCircle();
+        circlePool = new ObjectPool<GameObject>(OnCreate, OnGet, OnRelease, OnDestroyCircle, false, 5, 5);
         StartCoroutine(SpawnNewCircles());
-
-        
-
     }
+
+    
 
     private void SubToEvents()
     {
@@ -76,17 +79,7 @@ public class SpawnCircles : MonoBehaviour
         if (parentCanvas != null && circlePrefab != null)
         {
             // Instantiate the image prefab
-            GameObject circle = Instantiate(circlePrefab);
-
-            circle.GetComponent<Scale>().SetGrowDuration(soCircleConfig.growPhases[currentPhase]);
-            circle.GetComponent<OnTouch>().SetTimeOut(soCircleConfig.spawnDelayTimeoutPhasesInSeconds[currentPhase]);
-            circle.GetComponent<ChangeColour>().SetColour(soCircleConfig.circleColourPhases[currentPhase]);
-            
-            Debug.Log("Game phase: " + currentPhase);
-            Debug.Log("Setting grow duration to: " + soCircleConfig.growPhases[currentPhase]);
-
-            // Set the parent to the canvas
-            circle.transform.SetParent(transform, false);
+            GameObject circle = circlePool.Get();
 
             // Get the RectTransform of the image
             RectTransform imageRect = circle.GetComponent<RectTransform>();
@@ -129,4 +122,34 @@ public class SpawnCircles : MonoBehaviour
             spawnDelay = delay;
         }
     }
+    
+    private GameObject OnCreate()
+    {
+        GameObject circle = Instantiate(circlePrefab);
+        circle.GetComponent<Pool>().SetObjectPool(circlePool);
+        return circle;
+    }
+    
+    private void OnGet(GameObject circle)
+    {
+        circle.GetComponent<Scale>().SetGrowDuration(soCircleConfig.growPhases[currentPhase]);
+        circle.GetComponent<OnTouch>().SetTimeOut(soCircleConfig.spawnDelayTimeoutPhasesInSeconds[currentPhase]);
+        circle.GetComponent<ChangeColour>().SetColour(soCircleConfig.circleColourPhases[currentPhase]);
+        circle.transform.SetParent(transform, false);
+        circle.SetActive(true);
+    }
+    
+    private void OnRelease(GameObject circle)
+    {
+        circle.GetComponent<Scale>().SetGrowDuration(0f);
+        circle.GetComponent<OnTouch>().SetTimeOut(0f);
+        circle.GetComponent<ChangeColour>().SetColour(new Color(0f,0f,0f));
+        circle.SetActive(false);
+    }
+    
+    private void OnDestroyCircle(GameObject circle)
+    {
+        Destroy(circle);
+    }
+    
 }
