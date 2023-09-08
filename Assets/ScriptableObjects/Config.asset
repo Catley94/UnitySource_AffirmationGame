@@ -24,9 +24,9 @@ MonoBehaviour:
   - 0.8
   - 1.5
   phaseMinuteThresholds:
-  - 0.1
-  - 0.2
-  - 0.3
+  - 1
+  - 2
+  - 3
   endGameTimeThreshold: 5
   circleColourPhases:
   - {r: 0.28235295, g: 0.40392157, b: 0.7176471, a: 0}
