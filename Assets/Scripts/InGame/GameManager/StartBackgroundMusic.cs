@@ -6,16 +6,21 @@ using UnityEngine;
 public class StartBackgroundMusic : MonoBehaviour
 {
 
+    [SerializeField] private SOCircleConfig soCircleConfig;
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private float pitchChangeDuration = 2f;
     private float musicSpeed = 1f;
     
     private AudioSource audioSource;
-    
+
+    private void OnEnable()
+    {
+        SubToEvents();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        SubToEvents();
         
         musicSpeed = 1.5f;
         
@@ -28,10 +33,10 @@ public class StartBackgroundMusic : MonoBehaviour
 
     private void SubToEvents()
     {
-
         GetComponent<State_Phase>().Phase1.AddListener((phaseObj) =>
         {
             musicSpeed = 1.4f;
+            SetVolume(phaseObj.volume);
             StartCoroutine(ChangePitchOverTime(musicSpeed));
             // audioSource.pitch = musicSpeed;
         });
@@ -39,16 +44,23 @@ public class StartBackgroundMusic : MonoBehaviour
         GetComponent<State_Phase>().Phase2.AddListener((phaseObj) =>
         {
             musicSpeed = 1.25f;
+            SetVolume(phaseObj.volume);
             StartCoroutine(ChangePitchOverTime(musicSpeed));
             // audioSource.pitch = musicSpeed;
         });
         
-        GetComponent<State_Phase>().Phase2.AddListener((phaseObj) =>
+        GetComponent<State_Phase>().Phase3.AddListener((phaseObj) =>
         {
             musicSpeed = 1f;
+            SetVolume(phaseObj.volume);
             StartCoroutine(ChangePitchOverTime(musicSpeed));
             // audioSource.pitch = musicSpeed;
         });
+    }
+
+    private void SetVolume(float level)
+    {
+        audioSource.volume = level;
     }
 
     private IEnumerator ChangePitchOverTime(float toPitch)

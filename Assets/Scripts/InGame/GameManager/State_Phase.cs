@@ -11,12 +11,14 @@ public class PhaseObject
     public float growDuration;
     public float delayDuration;
     public Color circleColour;
+    public float volume;
     
-public PhaseObject(float growDuration, float delayDuration, Color color)
+public PhaseObject(float growDuration, float delayDuration, Color color, float volume)
     {
         this.growDuration = growDuration;
         this.delayDuration = delayDuration;
         this.circleColour = color;
+        this.volume = volume;
     }
 }
 
@@ -47,7 +49,7 @@ public class State_Phase : MonoBehaviour
     void Start()
     {
         
-        Phase0?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhasesInSeconds[GetCurrentPhase()], soCircleConfig.circleColourPhases[GetCurrentPhase()]));
+        Phase0?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhasesInSeconds[GetCurrentPhase()], soCircleConfig.circleColourPhases[GetCurrentPhase()], soCircleConfig.volumePhases[GetCurrentPhase()]));
         
         
         
@@ -75,7 +77,7 @@ public class State_Phase : MonoBehaviour
             if (elapsedTime.TotalMinutes >= soCircleConfig.phaseMinuteThresholds[0])
             {
                 currentPhase = 1;
-                Phase1?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhasesInSeconds[GetCurrentPhase()], soCircleConfig.circleColourPhases[GetCurrentPhase()]));
+                Phase1?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhasesInSeconds[GetCurrentPhase()], soCircleConfig.circleColourPhases[GetCurrentPhase()], soCircleConfig.volumePhases[GetCurrentPhase()]));
                 phase1Complete = true;
             }
         }
@@ -84,7 +86,7 @@ public class State_Phase : MonoBehaviour
             if (elapsedTime.TotalMinutes >= soCircleConfig.phaseMinuteThresholds[1])
             {
                 currentPhase = 2;
-                Phase2?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhasesInSeconds[GetCurrentPhase()], soCircleConfig.circleColourPhases[GetCurrentPhase()]));
+                Phase2?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhasesInSeconds[GetCurrentPhase()], soCircleConfig.circleColourPhases[GetCurrentPhase()], soCircleConfig.volumePhases[GetCurrentPhase()]));
                 phase2Complete = true;
             }
         }
@@ -93,7 +95,7 @@ public class State_Phase : MonoBehaviour
             if (elapsedTime.TotalMinutes >= soCircleConfig.phaseMinuteThresholds[2])
             {
                 currentPhase = 3;
-                Phase3?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhasesInSeconds[GetCurrentPhase()], soCircleConfig.circleColourPhases[GetCurrentPhase()]));
+                Phase3?.Invoke(new PhaseObject(soCircleConfig.growPhases[GetCurrentPhase()], soCircleConfig.spawnDelayTimeoutPhasesInSeconds[GetCurrentPhase()], soCircleConfig.circleColourPhases[GetCurrentPhase()], soCircleConfig.volumePhases[GetCurrentPhase()]));
                 phase3Complete = true;
             }
         } else if (elapsedTime.TotalMinutes >= soCircleConfig.endGameTimeThreshold)

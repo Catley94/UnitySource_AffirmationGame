@@ -529,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b914956d3b10ac177a3eda462fbeb2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soCircleConfig: {fileID: 11400000, guid: ff19d048db6ed63d59db4b1cbb78e539, type: 2}
   audioClip: {fileID: 8300000, guid: a71d1f4e009d1a6f6a3512191617a08a, type: 3}
   pitchChangeDuration: 2
 --- !u!1 &516598330
@@ -542,7 +543,7 @@ GameObject:
   - component: {fileID: 516598332}
   - component: {fileID: 516598331}
   m_Layer: 0
-  m_Name: AudioSource_SFC
+  m_Name: AudioSource_SFX
   m_TagString: AudioSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

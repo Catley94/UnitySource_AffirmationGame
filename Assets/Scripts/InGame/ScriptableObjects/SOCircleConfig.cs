@@ -13,5 +13,6 @@ public class SOCircleConfig : ScriptableObject
     public float[] phaseMinuteThresholds;
     public float endGameTimeThreshold;
     public Color[] circleColourPhases;
+    public float[] volumePhases;
 }
 

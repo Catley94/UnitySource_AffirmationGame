@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLeft: 1
-  audioClip: {fileID: 8300000, guid: b102b6cdf4df04a19ad70d89e9a9c3fa, type: 3}
+  audioClip: {fileID: 8300000, guid: c22b20e4aa700e8d58e9ddc0349b285e, type: 3}
   TimedOutEvent:
     m_PersistentCalls:
       m_Calls: []
