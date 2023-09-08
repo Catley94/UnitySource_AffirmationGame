@@ -98,7 +98,6 @@ public class State_Phase : MonoBehaviour
             }
         } else if (elapsedTime.TotalMinutes >= soCircleConfig.endGameTimeThreshold)
         {
-            Debug.Log("GAME ENDED");
             SceneManager.LoadScene("Exit");
         }
     }

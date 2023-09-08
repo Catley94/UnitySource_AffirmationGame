@@ -81,9 +81,6 @@ public class SpawnCircles : MonoBehaviour
             circle.GetComponent<Scale>().SetGrowDuration(soCircleConfig.growPhases[currentPhase]);
             circle.GetComponent<OnTouch>().SetTimeOut(soCircleConfig.spawnDelayTimeoutPhasesInSeconds[currentPhase]);
             circle.GetComponent<ChangeColour>().SetColour(soCircleConfig.circleColourPhases[currentPhase]);
-            
-            Debug.Log("Game phase: " + currentPhase);
-            Debug.Log("Setting grow duration to: " + soCircleConfig.growPhases[currentPhase]);
 
             // Set the parent to the canvas
             circle.transform.SetParent(transform, false);
@@ -105,7 +102,7 @@ public class SpawnCircles : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Parent canvas or image prefab not assigned.");
+         
         }
         
     }
@@ -125,7 +122,6 @@ public class SpawnCircles : MonoBehaviour
     {
         if (spawnDelay != delay)
         {
-            Debug.Log($"Setting delay to: {delay}");
             spawnDelay = delay;
         }
     }
