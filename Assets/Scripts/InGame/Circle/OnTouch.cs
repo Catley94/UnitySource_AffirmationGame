@@ -31,20 +31,9 @@ public class OnTouch : MonoBehaviour
         Invoke(nameof(TimedOut), timeLeft);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (Touchscreen.current.primaryTouch.press.isPressed)
-        {
-            Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-            
-            if (IsPointInsideCircle(touchPosition, transform.position, circleImage.rectTransform.sizeDelta.x / 2f))
-            {
-                // The touch is inside the circle image
-                Debug.Log("Touched inside the circle!");
-                Touched();
-            }
-        }
+        Touched();
     }
 
     private void Touched()
