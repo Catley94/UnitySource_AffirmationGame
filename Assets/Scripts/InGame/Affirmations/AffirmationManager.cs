@@ -19,7 +19,11 @@ public class AffirmationManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chosenAffirmation = ES3.Load<SOAffirmation>("ChosenAffirmation");
+        if (ES3.KeyExists("ChosenAffirmation"))
+        {
+            chosenAffirmation = ES3.Load<SOAffirmation>("ChosenAffirmation");
+        }
+
         
         ResetScaleToZero();
 
